@@ -26,6 +26,16 @@ public class Locations implements java.io.Serializable {
 		this.city = city;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Locations [streetAddress=" + streetAddress + ", postalCode="
+				+ postalCode + ", city=" + city + ", stateProvince="
+				+ stateProvince + "]";
+	}
+
 	public Locations(short locationId, Countries countries,
 			String streetAddress, String postalCode, String city,
 			String stateProvince, Set departmentses) {

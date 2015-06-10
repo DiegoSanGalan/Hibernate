@@ -53,4 +53,13 @@ public class Regions implements java.io.Serializable {
 		this.countrieses = countrieses;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Regiones:  regionId = " + regionId + "/nregionName = " + regionName;
+	}
+
+	
 }

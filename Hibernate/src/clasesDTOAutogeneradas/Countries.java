@@ -34,6 +34,15 @@ public class Countries implements java.io.Serializable {
 		return this.countryId;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Paises: CountryId = " + countryId + ", countryName = "
+				+ countryName;
+	}
+
 	public void setCountryId(String countryId) {
 		this.countryId = countryId;
 	}
