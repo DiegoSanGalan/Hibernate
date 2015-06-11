@@ -31,9 +31,9 @@ public class Locations implements java.io.Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Locations [streetAddress=" + streetAddress + ", postalCode="
-				+ postalCode + ", city=" + city + ", stateProvince="
-				+ stateProvince + "]";
+		return "  * Locations Dirección = " + streetAddress + ",   Código Postal = "
+				+ postalCode + ",   Ciudad = " + city + ", Provincia = "
+				+ stateProvince;
 	}
 
 	public Locations(short locationId, Countries countries,

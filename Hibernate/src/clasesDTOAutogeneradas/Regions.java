@@ -58,7 +58,7 @@ public class Regions implements java.io.Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Regiones:  regionId = " + regionId + "/nregionName = " + regionName;
+		return "  * Regiones:  regionId = " + regionId + "     regionName = " + regionName;
 	}
 
 	

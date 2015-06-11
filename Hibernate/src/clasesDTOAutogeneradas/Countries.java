@@ -39,7 +39,7 @@ public class Countries implements java.io.Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Paises: CountryId = " + countryId + ", countryName = "
+		return "  * Paises: CountryId = " + countryId + ",     countryName = "
 				+ countryName;
 	}
 
