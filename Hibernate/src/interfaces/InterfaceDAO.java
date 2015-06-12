@@ -17,7 +17,9 @@ public interface InterfaceDAO <Generico>{
 	 * @param c Tipo ObjetoDTO
 	 * @return booleano indicando true si se creó correctamente
 	 */
-	public boolean create(Generico c);
+	public Object create(Generico c);
+	
+	
 	
 	// utilizo tipo Object para que nos sirva con cualquiera
 	/**
@@ -29,6 +31,8 @@ public interface InterfaceDAO <Generico>{
 	public boolean delete(Object claveId);
 	
 	
+	
+	
 	/**
 	 * Método para actualizar en la base de datos
 	 * @param c Tipo ObjetoDTO
@@ -37,12 +41,16 @@ public interface InterfaceDAO <Generico>{
 	public boolean update(Generico c);
 	
 	
+	
+	
 	/**
 	 * Método para leer por ID
 	 * @param claveId tipo Object
 	 * @return tipo ObjetoDTO
 	 */
 	public Generico read(Object claveId);
+	
+	
 	
 	
 	/**

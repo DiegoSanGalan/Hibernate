@@ -14,7 +14,7 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceDAO<Employee
 	public EmployeeDAO()
 	{
 		
-	System.out.println("Constructor EmployeeDAO");	
+	//System.out.println("Constructor EmployeeDAO");	
 	
 	}
 
@@ -22,7 +22,7 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceDAO<Employee
 	/**
 	 * Recibo un Empleado
 	 */
-	public boolean create(Employees c) {
+	public Object create(Employees c) {
 		boolean ok = false;
 		
 				
@@ -43,15 +43,19 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceDAO<Employee
 
 	@Override
 	public Employees read(Object claveId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Employees emp = new Employees();
+		emp = (Employees) this.getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE EMPLOYEES_ID = " + claveId).addEntity(Employees.class).uniqueResult();
+		return emp;
 	}
 
 	@Override
 	public List <Employees> readAll() {
-		//List <Employees> listEmp = new ArrayList<Employees>();
-		//Session ses = ContenedorDAO.getSes();
-		List<Employees> list = ContenedorDAO.getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE DEPARTMENT_ID = 80").addEntity(Employees.class).list();
+		// podemos poner this.getSes() para obtener la conexión necesaria para ejecutar el 
+		//.createSQLQuery. Es lo mismo que poner getSes() simplemente porque accedemos al método
+		// del padre (ContenedorDAO)
+		@SuppressWarnings("unchecked")
+		List<Employees> list = getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE DEPARTMENT_ID = 80").addEntity(Employees.class).list();
 		return list;
 	}
 	

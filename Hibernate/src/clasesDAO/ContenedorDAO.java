@@ -8,7 +8,7 @@ import org.hibernate.Session;
  *
  */
 public class ContenedorDAO {
-	private static Session ses;
+	private Session ses;
 	
 	public ContenedorDAO()
 	{
@@ -20,7 +20,7 @@ public class ContenedorDAO {
 	 * Para obtener la sesion 
 	 * @return the ses
 	 */
-	public static Session getSes() {
+	public  Session getSes() {
 		return ses;
 	}
 
@@ -28,9 +28,9 @@ public class ContenedorDAO {
 	 * Para hacer set de la sesion del factory
 	 * @param ses the ses to set
 	 */
-	public static void setSes(Session ses) {
+	public void setSes(Session session) {
 		
-		ContenedorDAO.ses = ses;
+		ses = session;
 	}
 
 	

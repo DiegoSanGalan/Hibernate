@@ -1,7 +1,8 @@
 package mainpruebas;
 
-import services.employees.OperacionesEmpleados;
-import sessionmanager.SessionManager;
+import services.employees.Operaciones;
+//import services.employees.OperacionesEmpleados;
+import sessionmanager.SesionManager;
 
 public class MainPruebas {
 
@@ -12,9 +13,9 @@ public class MainPruebas {
 		// TODO Auto-generated method stub
 
 		
-		OperacionesEmpleados oper = new OperacionesEmpleados();
-		oper.incrementarSalario();
-		SessionManager.cerrarSesionFactory();
+		Operaciones oper = new Operaciones();
+		System.out.println(oper.incrementarSalario());
+		SesionManager.cerrarSessionFactory();
 		
 	}
 

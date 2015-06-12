@@ -55,7 +55,7 @@ public class OperacionesEmpleados {
 		//*****************************************************************
 		
 		try {
-			transaction = empleadoDAO.getSes().beginTransaction();
+			transaction = ContenedorDAO.getSes().beginTransaction();
 		while (it.hasNext())
 		{
 			empDTO = it.next();
@@ -74,7 +74,7 @@ public class OperacionesEmpleados {
 	}
 	finally 
 	{
-		SessionManager.cerrarSes(); // cierro el session Factory
+		SessionManager.cerrarSes(); // cierro la sesión
 	}
 		
 		return ok;
