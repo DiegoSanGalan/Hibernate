@@ -25,9 +25,10 @@ public class SesionManager {
 	
 	/**
 	 * Obtener el SessionFactory. static DE MOMENTO NO USADO
+	 * ES ESTATIC PORQUE SOLO TENDREMOS UNA DE ESTA CLASE.
 	 * @return Objeto sesion_factory
 	 */
-	public static SessionFactory getSessionFactory ()
+	public SessionFactory getSessionFactory ()
 	{
 		return sesion_factory;
 	}

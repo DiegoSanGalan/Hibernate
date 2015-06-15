@@ -12,6 +12,17 @@ import java.util.Set;
  */
 public class Employees implements java.io.Serializable {
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Employees [employeeId=" + employeeId + ", departments="
+				+ departments + ", employees=" + employees + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", hireDate="
+				+ hireDate + ", salary=" + salary + "]";
+	}
+
 	private int employeeId;
 	private Jobs jobs;
 	private Departments departments;

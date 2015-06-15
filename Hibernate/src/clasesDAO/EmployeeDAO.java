@@ -7,8 +7,9 @@ import org.hibernate.Session;
 
 import clasesDTOAutogeneradas.Employees;
 import interfaces.InterfaceDAO;
+import interfaces.InterfaceEmployeeDAO;
 
-public class EmployeeDAO  extends ContenedorDAO implements InterfaceDAO<Employees> {
+public class EmployeeDAO  extends ContenedorDAO implements InterfaceEmployeeDAO {
 
 	
 	public EmployeeDAO()
@@ -55,7 +56,17 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceDAO<Employee
 		//.createSQLQuery. Es lo mismo que poner getSes() simplemente porque accedemos al método
 		// del padre (ContenedorDAO)
 		@SuppressWarnings("unchecked")
-		List<Employees> list = getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE DEPARTMENT_ID = 80").addEntity(Employees.class).list();
+		List<Employees> list = getSes().createSQLQuery("SELECT * FROM EMPLOYEES").addEntity(Employees.class).list();
+		return list;
+	}
+
+	@Override
+	public List<Employees> listadoPorDepartamento(Object dpto) {
+		List<Employees> list = getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE DEPARTMENT_ID = " + dpto).addEntity(Employees.class).list();
+		
+		
+		
+		
 		return list;
 	}
 	
