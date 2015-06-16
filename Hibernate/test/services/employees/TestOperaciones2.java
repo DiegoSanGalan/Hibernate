@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -44,18 +45,27 @@ public class TestOperaciones2 {
 	public void testIncrementarSalario() {
 		int sizeLista = 0;
 		Session ses = null;
-		EmployeeDAO empleadoDAO = new EmployeeDAO(); // creo objeto EmpleadoDAO
+		Session ses2 = null;
 		Operaciones oper = new Operaciones(); // creo objeto OperacionesEmpleados
+		EmployeeDAO empleadoDAO = new EmployeeDAO(); // creo objeto EmpleadoDAO
+		EmployeeDAO emp = new EmployeeDAO();
 		ses = SesionManager.obtenerSesionNueva(); // obtengo una nueva sesion
 		empleadoDAO.setSes(ses); // seteo la sesion en empleadoDAO
+		
+			
 		List<Employees> listAntesSubida = empleadoDAO.readAll(); // recupero todos los empleados y los guardo en DTO
 		sizeLista = listAntesSubida.size(); // para recorrer la lista
+		
+		System.out.println("**************antes de subida++++++++++++++");
+		System.out.println(listAntesSubida.get(0).getSalary());
+		System.out.println("**************antes de subida++++++++++++++");
+		
 		oper.incrementarSalario();
 		
 		ses.close();
-		EmployeeDAO emp = new EmployeeDAO();
-		ses = SesionManager.obtenerSesionNueva();
-		emp.setSes(ses);
+		
+		ses2 = SesionManager.obtenerSesionNueva();
+		emp.setSes(ses2);
 		
 		List<Employees> listDespuesSubida = emp.readAll(); // recupero los empleados después de subir sueldo
 		
@@ -82,7 +92,7 @@ public class TestOperaciones2 {
 		}
 		
 		ses.close();
-		SesionManager.cerrarSessionFactory();
+		
 	}
 
 	/**
@@ -101,4 +111,9 @@ public class TestOperaciones2 {
 		
 	}
 
+	@AfterClass
+	public static void CerrarSessionFactory()
+	{
+		SesionManager.cerrarSessionFactory();
+	}
 }

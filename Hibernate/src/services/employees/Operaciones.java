@@ -68,7 +68,7 @@ public class Operaciones {
 	Transaction transaction = null;	
 	Session ses = null;
 	ses = SesionManager.obtenerSesionNueva();
-	List<Employees> listEmpDTO = null; // variable para almacenar la lista de Empleados
+	List<Employees> listEmpDTO = new ArrayList<Employees>(); // variable para almacenar la lista de Empleados
 	empleadoDAO.setSes(ses); // recupero la sesion de SessionFactory y lo seteo en el contenedor de clasesDAO
 		
 	
@@ -114,23 +114,25 @@ public class Operaciones {
 	
 		for (Employees emp : listaEDTO)
 		{
-			System.out.println("*****************************************************");
+			/*System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("salario inicial" + emp.getSalary());
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
-
+			*/
 			emp.setSalary(emp.getSalary().multiply(new BigDecimal(1.2)));
-			System.out.println("*****************************************************");
+			
+			
+			/*System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("salario aumentado" + emp.getSalary());
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
 			System.out.println("*****************************************************");
-			
+			*/
 		}
 	}
 	
@@ -143,9 +145,9 @@ public class Operaciones {
 	{
 		Transaction transaction = null;	
 		Session ses = null;
-		List<Employees> list = null; // para almacenar la lista de empleados que mas ganan
+		List<Employees> list = new ArrayList<Employees>(); // para almacenar la lista de empleados que mas ganan
 							// de cada departamento.
-		List<Departments> listDptos = null; // para almacenar lista de departamentos
+		List<Departments> listDptos = new ArrayList<Departments>(); // para almacenar lista de departamentos
 		
 		try
 		{
@@ -182,7 +184,7 @@ public class Operaciones {
 	private Employees obtenerElQueMasGana(Departments dpto) {
 		Employees empleadoDTOMasGana = null;
 		BigDecimal mayor = new BigDecimal (0);
-		List<Employees> l = null;
+		List<Employees> l = new ArrayList<Employees>();
 		l = empleadoDAO.listadoPorDepartamento(dpto); // obtener lista empleados por departamento
 		for (Employees emp : l) // recorro la lista
 		{
@@ -214,7 +216,7 @@ public class Operaciones {
 	 */
 	public List<Employees> obtenerEmpleadosPorDepartamento(Object dpto)
 	{
-		List <Employees> listEmp2DTO = null;
+		List <Employees> listEmp2DTO = new ArrayList<Employees>();
 		Transaction transaction = null;	
 		Session ses = null;
 		try

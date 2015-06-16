@@ -46,7 +46,7 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceEmployeeDAO 
 	public Employees read(Object claveId) {
 		
 		Employees emp = new Employees();
-		emp = (Employees) this.getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE EMPLOYEES_ID = " + claveId).addEntity(Employees.class).uniqueResult();
+		emp = (Employees) this.getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = " + claveId).addEntity(Employees.class).uniqueResult();
 		return emp;
 	}
 
