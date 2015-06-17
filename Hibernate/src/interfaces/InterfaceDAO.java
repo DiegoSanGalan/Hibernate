@@ -55,7 +55,7 @@ public interface InterfaceDAO <Generico>{
 	
 	/**
 	 * Método para recuperar todos los registros de la Base de Datos
-	 * @return ArrayList
+	 * @return List del tipo Solicitado
 	 */
 	public List<Generico> readAll();
 	

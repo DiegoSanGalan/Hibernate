@@ -5,6 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Clase para gestionar las sesiones utilizando Hibernate
+ * @author Diego Santamaría
+ *
+ */
 public class SesionManager {
 	
 	static {
@@ -12,13 +17,12 @@ public class SesionManager {
 		Configuration configuration = new Configuration().configure();
     	StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
     	sesion_factory = configuration.buildSessionFactory(builder.build());
-		
 	}
 	
 	private static SessionFactory sesion_factory;
 	
 	/**
-	 * Constructor privado Clase SesionManager
+	 * Constructor privado Clase SesionManager. Singleton
 	 */
 	private SesionManager (){}
 	
@@ -35,7 +39,7 @@ public class SesionManager {
 	
 	/**
 	 * Obtener nueva sesión. static
-	 * @return Objeto Session
+	 * @return Tipo Session
 	 */
 	public static Session obtenerSesionNueva ()
 	{
@@ -44,7 +48,7 @@ public class SesionManager {
 	
 	
 	/**
-	 * Método para cerar la sesion
+	 * Método para cerrar la sesión
 	 * @param sesion Recibe la sesión que queremos cerrar
 	 */
 	public static void cerrarSession (Session sesion)
@@ -54,7 +58,7 @@ public class SesionManager {
 	
 	
 	/**
-	 * Para finalizar todo. Cierra la sesion_factory
+	 * Para finalizar todo. Cierra la session_factory
 	 */
 	public static void cerrarSessionFactory()
 	{

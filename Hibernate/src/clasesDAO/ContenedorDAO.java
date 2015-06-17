@@ -10,6 +10,9 @@ import org.hibernate.Session;
 public class ContenedorDAO {
 	private Session ses;
 	
+	/**
+	 * Constructor Básico de la clase, sin argumentos.
+	 */
 	public ContenedorDAO()
 	{
 		
@@ -17,19 +20,18 @@ public class ContenedorDAO {
 	
 	
 	/**
-	 * Para obtener la sesion 
-	 * @return the ses
+	 * Para obtener la sesión 
+	 * @return Tipo Session ses
 	 */
 	public  Session getSes() {
 		return ses;
 	}
 
 	/**
-	 * Para hacer set de la sesion del factory
-	 * @param ses the ses to set
+	 * Para hacer set de la sesión del factory
+	 * @param session Tipo Session
 	 */
 	public void setSes(Session session) {
-		
 		ses = session;
 	}
 

@@ -1,24 +1,12 @@
 package services.employees;
-import interfaces.InterfaceDAO;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
-
 import sessionmanager.SesionManager;
-//import sessionmanager.SessionManager;
 
-//import val.examples.hibernate.Region;
-//import val.examples.hibernate.Transaction;
-
-import clasesDAO.ContenedorDAO;
 import clasesDAO.DepartmentsDAO;
 import clasesDAO.EmployeeDAO;
 import clasesDTOAutogeneradas.Departments;
@@ -47,20 +35,12 @@ public class Operaciones {
 		// de la clase EmployeeDAO. HACIENDOLO MAS FLEXIBLE. 
 		// PARA QUE FUNCIONE TENDRIA QUE CREAR OTRO INTERFACE HIJO QUE CONTENGA TODOS LOS MÉTODOS
 		// DEL EMPLEADODAO
-		
-		
 	}
 	
-	/*public Employees recuperarPorId(Object id)
-	{
-		Employees empDTO = null;
-		
-		return empDTO;
-	}*/
 	
 	/**
 	 * Incrementar el salario a todos los empleados
-	 * @return
+	 * @return booleano a true si se ha incrementado el salario, false si da error
 	 */
 	public boolean incrementarSalario()
 	{
@@ -71,11 +51,6 @@ public class Operaciones {
 	List<Employees> listEmpDTO = new ArrayList<Employees>(); // variable para almacenar la lista de Empleados
 	empleadoDAO.setSes(ses); // recupero la sesion de SessionFactory y lo seteo en el contenedor de clasesDAO
 		
-	
-		
-	
-		
-	
 		//*****************************************************************
 		// ***************transaccion incrementar salario******************
 		//*****************************************************************
@@ -85,7 +60,6 @@ public class Operaciones {
 		listEmpDTO = empleadoDAO.readAll(); //cargo la lista recogida de la base de datos
 		actualizarSalario(listEmpDTO);
 		transaction.commit();//si todo ha ido bien, persisto los cambio, los hago de verdad, no en la copia de la BD
-		
 		ok = true;
 		}
 	catch (Exception e)
@@ -97,49 +71,32 @@ public class Operaciones {
 		{
 		SesionManager.cerrarSession(ses); // cierro la sesion
 		}
-		
-		return ok;
+	return ok;
 	}
+	//*****************************************************************
+	//********************** Fin de la transaccion ********************
+	//*****************************************************************
 	
-	//*****************************************************************
-	// ***********************transaccion *****************************
-	//*****************************************************************
+	
+	
+	
 	
 	/**
 	 * Recorro la lista y actualizo el salario en 1.2
-	 * @param listaEDTO
+	 * @param listaEDTO Lista de los Empleados
 	 */
 	private void actualizarSalario (List<Employees> listaEDTO)
 	{
-	
 		for (Employees emp : listaEDTO)
 		{
-			/*System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("salario inicial" + emp.getSalary());
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			*/
 			emp.setSalary(emp.getSalary().multiply(new BigDecimal(1.2)));
-			
-			
-			/*System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("salario aumentado" + emp.getSalary());
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			System.out.println("*****************************************************");
-			*/
 		}
 	}
 	
 	
 	/**
 	 * Método para recuperar una lista con los empleados que más ganan de cada departamento
-	 * @return List<Employees>
+	 * @return List<Employees> Lista de los empleados que más ganan
 	 */
 	public List<Employees> listarEmpleadosQueMasGanan ()
 	{
@@ -171,13 +128,12 @@ public class Operaciones {
 		{
 			SesionManager.cerrarSession(ses); // cierro la sesion
 		}
-		
-		
 		return list;
 	}
 
+	
 	/**
-	 * Método para obtener el empleado que mas gana de cada departamento
+	 * Método privado para obtener el empleado que mas gana de cada departamento
 	 * @param dpto tipo Departments
 	 * @return EmpleadoDTO
 	 */
@@ -198,9 +154,11 @@ public class Operaciones {
 		return empleadoDTOMasGana;
 	}
 
+	
+	
 	/**
 	 * Método privado para obtener una lista de todos los departamentos
-	 * @param listDptos
+	 * @return Lista con todos los departamentos
 	 */
 	private List<Departments> readAllDepartamentos() 
 	{
@@ -211,8 +169,8 @@ public class Operaciones {
 	
 	/**
 	 * Método para obtener una lista de los empleados de un departamento recibido por parámetro
-	 * @param dpto
-	 * @return Lista de empleados
+	 * @param dpto Tipo Object
+	 * @return Lista de empleados Tipo List
 	 */
 	public List<Employees> obtenerEmpleadosPorDepartamento(Object dpto)
 	{
@@ -237,24 +195,4 @@ public class Operaciones {
 		}
 		return listEmp2DTO;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
 }
