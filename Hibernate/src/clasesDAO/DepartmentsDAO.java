@@ -40,7 +40,7 @@ public class DepartmentsDAO extends ContenedorDAO implements InterfaceDepartment
 	@Override
 	public List<Departments> readAll() {
 		@SuppressWarnings("unchecked")
-		List<Departments> list = getSes().createSQLQuery("SELECT DEPARTMENT_ID, DEPARTMENT_NAME FROM DEPARTMENTS").addEntity(Departments.class).list();
+		List<Departments> list = getSes().createSQLQuery("SELECT * FROM DEPARTMENTS").addEntity(Departments.class).list();
 		return list;
 	}
 

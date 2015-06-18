@@ -2,6 +2,7 @@ package services.employees;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,6 +21,7 @@ import clasesDTOAutogeneradas.Employees;
 public class Operaciones {
 	private EmployeeDAO empleadoDAO = null; // atributo de la clase EmployeeDAO
 	private DepartmentsDAO departamentDAO = null; // atributo de la clase DepartmentsDAO
+	private static Logger log = Logger.getLogger("mylog");
 	
 	/**
 	 * Constructor de la clase Operaciones para empleados
@@ -60,11 +62,13 @@ public class Operaciones {
 		listEmpDTO = empleadoDAO.readAll(); //cargo la lista recogida de la base de datos
 		actualizarSalario(listEmpDTO);
 		transaction.commit();//si todo ha ido bien, persisto los cambio, los hago de verdad, no en la copia de la BD
+		log.info("Se ha incrementado el salario correctamente en la base de datos");
 		ok = true;
 		}
 	catch (Exception e)
 		{
 		e.printStackTrace();
+		log.warning("Error en la transacción de incrementar salario");
 		transaction.rollback();//si algo ha ido mal, deshago la transacción
 		}
 	finally 
@@ -122,6 +126,7 @@ public class Operaciones {
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			log.warning("Error en la transacción al leer todos los departamentos");
 			transaction.rollback();//si algo ha ido mal, deshago la transacción
 		}
 		finally
@@ -183,10 +188,13 @@ public class Operaciones {
 			empleadoDAO.setSes(ses);
 			transaction = empleadoDAO.getSes().beginTransaction();
 			listEmp2DTO = empleadoDAO.listadoPorDepartamento(dpto);
+			log.info("Transacción correcta al obtener el listado de todos los empleados de un departamento");
 		}
+		
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			log.warning("Error en la transacción al obtener el listado por departamentos");
 			transaction.rollback();//si algo ha ido mal, deshago la transacción
 		}
 		finally

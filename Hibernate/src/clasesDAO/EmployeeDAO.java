@@ -98,10 +98,6 @@ public class EmployeeDAO  extends ContenedorDAO implements InterfaceEmployeeDAO 
 	@Override
 	public List<Employees> listadoPorDepartamento(Object dpto) {
 		List<Employees> list = getSes().createSQLQuery("SELECT * FROM EMPLOYEES WHERE DEPARTMENT_ID = " + dpto).addEntity(Employees.class).list();
-		
-		
-		
-		
 		return list;
 	}
 	

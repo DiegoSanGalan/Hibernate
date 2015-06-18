@@ -61,7 +61,6 @@ public class TestOperaciones2 {
 		System.out.println("**************antes de subida++++++++++++++");
 		
 		oper.incrementarSalario();
-		
 		ses.close();
 		
 		ses2 = SesionManager.obtenerSesionNueva();
@@ -71,28 +70,10 @@ public class TestOperaciones2 {
 		
 		for (int i = 0; i< sizeLista-1; i++)
 		{
-			System.out.println("*******************************");
-			System.out.println("SALARIO SIN MODIFICAR");
-			System.out.println("*******************************");
 			System.out.println(listAntesSubida.get(i).getSalary());
-			
-			System.out.println("*******************************");
-			System.out.println("SALARIO MODIFICADO");
-			System.out.println("*******************************");
-			System.out.println(listDespuesSubida.get(i).getSalary());
-			
-			
 			assertTrue("Salario no incrementado" , (listAntesSubida.get(i).getSalary().intValue()) < (listDespuesSubida.get(i).getSalary().intValue()));
-			
-			//assertFalse("Salario actual es igual que el salario anterior", listAntesSubida.get(i).getSalary().equals(listDespuesSubida.get(i).getSalary())) ;
-			
-			
-			
-			
 		}
-		
-		ses.close();
-		
+		ses2.close();
 	}
 
 	/**
